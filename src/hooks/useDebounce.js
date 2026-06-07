@@ -1,0 +1,15 @@
+import { useEffect, useState } from "react";
+
+const useDeBounce = (value, delay) => {
+  const [query, setQuery] = useState(value);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setQuery(value);
+    }, delay);
+
+    return () => clearTimeout(timeout);
+  }, [value, delay]);
+
+  return { query };
+};
